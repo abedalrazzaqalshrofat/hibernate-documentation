@@ -10,14 +10,17 @@
         <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/jpa</property>
         <property name="hibernate.connection.username">root</property>
         <property name="hibernate.connection.password"></property>
-
-        <property name="hibernate.hbm2ddl.auto">update</property>
+        <property name="hibernate.archive.autodetection">class</property>
+        <property name="hibernate.package_to_scan">com.newtechage.entity</property>
+        <property name="hibernate.hbm2ddl.auto">create</property>
         <!-- Database dialect -->
         <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+        <property name="hibernate.show_sql">true</property>
 
         <!-- Enable Hibernate's automatic session context management -->
         <property name="hibernate.current_session_context_class">thread</property>
-        <mapping class="com.newtechage.entity.Product"/>
+        <mapping class="com.newtechage.entity.Product" />
+
         <!-- Add more mappings as needed -->
     </session-factory>
 </hibernate-configuration>

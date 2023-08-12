@@ -1,23 +1,23 @@
 package com.newtechage;
 
 import com.newtechage.entity.Product;
-import jakarta.persistence.Entity;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
-import org.hibernate.cfg.Configuration;
-import org.hibernate.internal.SessionFactoryImpl;
+import com.newtechage.services.CrudRepository;
+import com.newtechage.services.CrudRepositoryServiceImpl;
 
 public class App{
     public static void main( String[] args ) {
 
-        try(Session session = HibernateUtil.getSessionFactoryInstance().openSession()) {
-            Transaction transaction = session.beginTransaction();
-            Product product = new Product();
-            product.setProductName("Keyboard");
-            session.persist(product);
-            transaction.commit();
-        }
+        CrudRepository<Product,Integer> crudRepository =
+                new CrudRepositoryServiceImpl<>(Product.class);
 
+        Product product = new Product();
+        product.setProductName("Car");
+        product.setBasicPrice(6554.5f);
+        product.setShippingFees(265.04f);
+        product.setTotalPrice(6554.5f * 265.04f);
+
+        product.setNames(new String[]{"hello","world","my","name"});
+
+        crudRepository.save(product);
     }
 }
