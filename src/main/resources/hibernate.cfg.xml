@@ -19,7 +19,6 @@
 
         <!-- Enable Hibernate's automatic session context management -->
         <property name="hibernate.current_session_context_class">thread</property>
-        <mapping class="com.newtechage.entity.Product" />
 
         <!-- Add more mappings as needed -->
     </session-factory>
